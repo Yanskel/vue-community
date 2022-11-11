@@ -1,22 +1,66 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: () => import('@/views/LoginRegister')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/complete',
+    name: 'complete',
+    component: () => import('@/views/CompleteInfo')
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: () => import('@/views/MainMenu'),
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/HomePage')
+      },
+      {
+        path: '/health',
+        name: 'health',
+        component: () => import('@/views/HealthPage'),
+      },
+      {
+        path: '/supManage',
+        name: 'supManage',
+        component: () => import('@/views/SupManage'),
+      },
+      {
+        path: '/announcement',
+        name: 'announcement',
+        component: () => import('@/views/AnnouncementPage'),
+      },
+      {
+        path: '/supApplication',
+        name: 'supApplication',
+        component: () => import('@/views/SupApplication'),
+      },
+      {
+        path: '/record',
+        name: 'record',
+        component: () => import('@/views/RecordPage'),
+      },
+      {
+        path: '/residentManage',
+        name: 'residentManage',
+        component: () => import('@/views/ResidentManage'),
+      },
+      {
+        path: '/employeeManage',
+        name: 'employeeManage',
+        component: () => import('@/views/EmployeeManage'),
+      }
+    ]
   }
 ]
 
