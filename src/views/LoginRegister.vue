@@ -6,7 +6,7 @@
           <div class="btitle">账户登录</div>
           <div class="bform">
             <el-input placeholder="请输入用户名" v-model="form.username"></el-input>
-            <el-input placeholder="请输入密码" v-model="form.password" show-password></el-input>
+            <el-input placeholder="请输入密码" v-model="form.password" show-password @keyup.enter.native="login"></el-input>
           </div>
           <el-button :loading="loading" class="bbutton" @click="login">
             <span v-if="!loading">登录</span>

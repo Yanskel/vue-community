@@ -23,7 +23,7 @@
     </el-dialog>
 
     <el-button @click="clearFilter">清除所有过滤</el-button>
-    <el-table ref="filterTable" :data="supplies" style="width: 100%">
+    <el-table ref="filterTable" :data="supplies" style="width: 100%" v-loading="loading">
       <el-table-column type="index" label="序号" align="center" width="100px">
       </el-table-column>
       <el-table-column prop="name" label="物资名称" align="center" width="300px">
@@ -67,11 +67,14 @@ export default {
         { text: '生活物资', value: '生活物资' },
         { text: '食品', value: '食品' }
       ],
-      modelType: 0  // 0新增  1修改 
+      modelType: 0,  // 0新增  1修改 
+      loading: true  //页面加载
     }
   },
-  mounted() {
+  created() {
     this.getSupplies()
+  },
+  mounted() {
     this.getCategory()
   },
   methods: {
@@ -187,6 +190,13 @@ export default {
 
     }
   },
+  watch: {
+    supplies() {
+      this.$nextTick(() => {
+        this.loading = false
+      })
+    }
+  }
 }
 </script>
 
