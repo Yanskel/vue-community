@@ -95,7 +95,7 @@ export default {
         .then(res => {
           if (res.data.code === 1) {
             this.$store.commit('ADD_LOGIN', res.data.data)
-            if (res.data.data.idNumber == null) {
+            if (res.data.data.role === 0 && res.data.data.idNumber == null) {
               this.$message.info('请先完善个人信息');
               this.$router.replace('/complete')
             } else {

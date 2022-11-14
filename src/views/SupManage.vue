@@ -2,7 +2,7 @@
   <div>
     <el-button class="formDialog" type="primary" @click="openAdd">+ 新增</el-button>
     <!-- 物资对话框 -->
-    <el-dialog title="添加新的物资" :visible.sync="dialogVisible" width="30%">
+    <el-dialog :title="title" :visible.sync="dialogVisible" width="30%">
       <el-form label-position="top" label-width="80px" :model="formSupplies">
         <el-form-item label="物资名称">
           <el-input v-model="formSupplies.name"></el-input>
@@ -68,7 +68,8 @@ export default {
         { text: '食品', value: '食品' }
       ],
       modelType: 0,  // 0新增  1修改 
-      loading: true  //页面加载
+      loading: true,  //页面加载
+      title:''
     }
   },
   created() {
@@ -122,6 +123,7 @@ export default {
     },
     //打开新增对话框
     openAdd() {
+      this.title ='添加新物资'
       this.dialogVisible = true
       this.formSupplies = {}
       this.modelType = 0
@@ -161,6 +163,7 @@ export default {
     },
     //打开编辑对话框
     openEdit(row) {
+      this.title = '编辑物资信息'
       this.dialogVisible = true
       this.modelType = 1
       this.axios.get('/supplies/' + row.id)

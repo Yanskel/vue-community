@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userForm: {},//传递用户参数
-    isCollapse: false,//菜单收起与展开
+    userForm: {},  //传递用户参数
+    isCollapse: false,  //菜单收起与展开
     tabsList: [
       {
         path: '/home',

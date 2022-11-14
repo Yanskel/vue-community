@@ -100,7 +100,7 @@ export default {
         left: 'left',
         // 数据的范围
         min: 10,
-        max: 200,
+        max: 1000,
         text: ['高', '低'],
         realtime: true,  //拖拽时，是否实时更新
         calculable: true,  //是否显示拖拽用的手柄
