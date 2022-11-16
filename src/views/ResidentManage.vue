@@ -68,9 +68,12 @@
           <el-button @click="remove(scope.row)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>
+      <div slot="empty">
+        <el-empty description="暂无数据"></el-empty>
+      </div>
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="page"
-      :page-size="pageSize" :page-sizes="[8, 15, 20, 25]" layout="total, sizes, prev, pager, next, jumper"
+      :page-size="pageSize" layout="total, prev, pager, next, jumper"
       :total="counts">
     </el-pagination>
   </div>

@@ -43,6 +43,9 @@
           <el-button @click="handelDelte(scope.row)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>
+      <div slot="empty">
+        <el-empty description="暂无数据"></el-empty>
+      </div>
     </el-table>
 
   </div>
@@ -69,7 +72,7 @@ export default {
       ],
       modelType: 0,  // 0新增  1修改 
       loading: true,  //页面加载
-      title:''
+      title: ''
     }
   },
   created() {
@@ -123,7 +126,7 @@ export default {
     },
     //打开新增对话框
     openAdd() {
-      this.title ='添加新物资'
+      this.title = '添加新物资'
       this.dialogVisible = true
       this.formSupplies = {}
       this.modelType = 0

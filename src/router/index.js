@@ -41,9 +41,9 @@ const routes = [
         component: () => import('@/views/AnnouncementPage'),
       },
       {
-        path: '/supApplication',
-        name: 'supApplication',
-        component: () => import('@/views/SupApplication'),
+        path: '/supApprove',
+        name: 'supApprove',
+        component: () => import('@/views/SupApprove'),
       },
       {
         path: '/record',
@@ -59,7 +59,7 @@ const routes = [
         path: '/employeeManage',
         name: 'employeeManage',
         component: () => import('@/views/EmployeeManage'),
-      }
+      },
     ]
   }
 ]

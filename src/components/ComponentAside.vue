@@ -12,12 +12,10 @@
         <i :class="`el-icon-${h.icon}`"></i>
         <span slot="title">{{ h.label }}</span>
       </template>
-      <el-menu-item-group>
         <el-menu-item @click="clickMenu(c)" v-for="c in h.children" :key="c.name" :index="c.name">
           <i :class="`el-icon-${c.icon}`"></i>
           {{ c.label }}
         </el-menu-item>
-      </el-menu-item-group>
     </el-submenu>
   </el-menu>
 </template>
@@ -62,9 +60,9 @@ export default {
           icon: 'goods',
           children: [
             {
-              path: '/supApplication',
-              name: 'supApplication',
-              label: '进行申请',
+              path: '/supApprove',
+              name: 'supApprove',
+              label: '物资审批',
               icon: 'document-add',
             },
             {

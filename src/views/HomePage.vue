@@ -5,8 +5,7 @@
     </div>
     <el-row style="margin-top: 40px">
       <el-col :span="12">
-        <div
-          style="width: 500px; margin: 0 auto; padding: 40px; box-shadow: 0 5px 15px -5px rgba(0,0,0,.5); border-radius: 10px;
+        <div style="width: 500px; margin: 0 auto; padding: 40px; box-shadow: 0 5px 15px -5px rgba(0,0,0,.5); border-radius: 10px;
           padding-right: 0; padding-bottom: 35px;">
           <div style="text-align: center; margin-bottom: 20px; font-size: 24px">
             <b>全国疫情实时数据</b>
@@ -164,7 +163,9 @@ export default {
 }
 </script>
 
-<style scoped="scoped">
+<style scoped>
+/* @import '../../public/reset.css'; */
+
 .item {
   text-align: center;
   width: 150px;
