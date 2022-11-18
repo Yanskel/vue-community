@@ -6,13 +6,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'login',
+    name: 'userLogin',
     component: () => import('@/views/LoginRegister')
   },
   {
     path: '/complete',
     name: 'complete',
     component: () => import('@/views/CompleteInfo')
+  },
+  {
+    path:'/adminLogin',
+    name:'adminLogin',
+    component: ()=> import('@/views/AdminLogin')
   },
   {
     path: '/main',
@@ -29,6 +34,16 @@ const routes = [
         path: '/health',
         name: 'health',
         component: () => import('@/views/HealthPage'),
+      },
+      {
+        path: '/healthRecord',
+        name: 'healthRecord',
+        component: () => import('@/views/HealthRecord'),
+      },
+      {
+        path: '/personalHealth',
+        name: 'personalHealth',
+        component: () => import('@/views/PersonalHealth'),
       },
       {
         path: '/supManage',

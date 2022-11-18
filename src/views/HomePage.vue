@@ -164,7 +164,6 @@ export default {
 </script>
 
 <style scoped>
-/* @import '../../public/reset.css'; */
 
 .item {
   text-align: center;

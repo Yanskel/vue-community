@@ -80,6 +80,18 @@ export default {
           icon: 'document',
         },
         {
+          path: '/personalHealth',
+          name: 'personalHealth',
+          label: '个人健康填报记录',
+          icon: 'eleme',
+        },
+        {
+          path: '/healthRecord',
+          name: 'healthRecord',
+          label: '填报记录',
+          icon: 's-order',
+        },
+        {
           path: '/supManage',
           name: 'supManage',
           label: '物资管理',

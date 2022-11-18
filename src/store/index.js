@@ -7,14 +7,14 @@ export default new Vuex.Store({
   state: {
     userForm: {},  //传递用户参数
     isCollapse: false,  //菜单收起与展开
-    tabsList: [
+    tabsList: [    //面包屑
       {
         path: '/home',
         name: 'home',
         label: '首页',
         icon: 'menu',
       }
-    ],//面包屑
+    ],
   },
   getters: {
   },

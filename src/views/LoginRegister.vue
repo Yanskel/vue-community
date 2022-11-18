@@ -1,5 +1,8 @@
 <template>
   <div class="login-register">
+    <div class="admin">
+      <el-link icon="el-icon-s-custom" @click="toAdmin">管理员登录</el-link>
+    </div>
     <div class="contain">
       <div class="big-box" :class="{ active: isLogin }">
         <div class="big-contain" key="bigContainLogin" v-if="isLogin">
@@ -100,6 +103,7 @@ export default {
               this.$router.replace('/complete')
             } else {
               this.$message.success('登录成功');
+              localStorage.setItem('userInfo', JSON.stringify(res.data.data))
               this.$router.replace('/main')
             }
           } else {
@@ -169,12 +173,25 @@ export default {
         this.correctPhone = true
       }
       this.allowRegister()
+    },
+    //前往管理员登录页面
+    toAdmin(){
+      this.$router.push('/adminLogin')
     }
   }
 }
 </script>
 
-<style scoped="scoped">
+<style lang="less" scoped>
+.admin {
+  float: right;
+  padding: 10px 20px 0 0;
+
+  .el-link {
+    color: rgb(57, 167, 176);
+  }
+}
+
 .login-register {
   width: 100vw;
   height: 100vh;
@@ -190,7 +207,7 @@ export default {
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 20px;
-  box-shadow: 0 0 3px #f0f0f0,
+  box-shadow: 0 0 25px #cac6c6,
     0 0 6px #f0f0f0;
 }
 

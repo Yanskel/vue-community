@@ -10,13 +10,14 @@
     </div>
 
     <div class="r-content">
-      <el-dropdown>
+      <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link text">
-          {{ userForm.name }}<i class="el-icon-arrow-down el-icon--right"></i>
+          <i class="el-icon-user"></i>
+          {{ userInfo.name }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item divided>退出</el-dropdown-item>
+          <el-dropdown-item divided command="logout">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -29,16 +30,39 @@ export default {
   name: 'ComponentHeader',
   data() {
     return {
-
+      userInfo: {}
     }
   },
   methods: {
     changeMenu() {
       this.$store.commit('COLLAPSE_MENU')
+    },
+    //退出
+    handleCommand(command) {
+      if (command === 'logout') {
+        this.axios.post('/user/logout')
+          .then(res => {
+            if (res.data.code === 1) {
+              localStorage.removeItem('userInfo')
+              this.$message.info(res.data.data)
+              this.$router.push('/')
+            }
+          })
+          .catch(err => {
+            console.error(err);
+          })
+      }
+
+    }
+  },
+  created() {
+    const userInfo = window.localStorage.getItem('userInfo')
+    if (userInfo) {
+      this.userInfo = JSON.parse(userInfo)
     }
   },
   computed: {
-    ...mapState(['tabsList', 'userForm'])
+    ...mapState(['tabsList'])
   }
 }
 </script>
