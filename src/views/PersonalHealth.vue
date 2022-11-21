@@ -182,13 +182,17 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .demo-table-expand {
   font-size: 0;
 }
 
 .demo-table-expand label {
   width: 90px;
+  color: #99a9bf;
+}
+
+.el-form-item__label{
   color: #99a9bf;
 }
 

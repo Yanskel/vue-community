@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style scoped="scoped">
+<style scoped>
 #infoForm {
   width: 30%;
   height: 50%;

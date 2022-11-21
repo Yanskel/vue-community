@@ -73,6 +73,7 @@ export default {
     }
   },
   mounted() {
+    this.notification()
     const options = {
       //标题样式
       title: {
@@ -160,11 +161,28 @@ export default {
     })
 
   },
+  methods: {
+    notification() {
+      this.axios.get('/announcement')
+        .then(res => {
+          if (res.data.code === 1) {
+            const announcement = res.data.data[0]
+            this.$notify.info({
+              title: announcement.title,
+              message: announcement.notice,
+              duration: 0
+            });
+          }
+        })
+        .catch(err => {
+          this.$message.error(err)
+        })
+    },
+  },
 }
 </script>
 
 <style scoped>
-
 .item {
   text-align: center;
   width: 150px;

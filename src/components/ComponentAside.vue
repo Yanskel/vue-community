@@ -1,5 +1,5 @@
 <template>
-  <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+  <el-menu default-active="1" class="el-menu-vertical-demo"
     :collapse="isCollapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
     <h3>{{ isCollapse ? '社区' : '社区疫情防控系统' }}</h3>
     <el-menu-item v-for="n in noChildren" :key="n.name" :index="n.name" @click="clickMenu(n)">
@@ -103,16 +103,22 @@ export default {
           label: '系统公告',
           icon: 'chat-line-square',
         },
+        {
+          path: '/personalApply',
+          name: 'personalApply',
+          label: '个人物资申请',
+          icon: 'folder-add',
+        },
       ]
     }
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
+    // handleOpen(key, keyPath) {
+    //   console.log(key, keyPath);
+    // },
+    // handleClose(key, keyPath) {
+    //   console.log(key, keyPath);
+    // },
     //菜单路由跳转
     clickMenu(menu) {
       if (this.$route.path !== menu.path && !(this.$route.path === '/home' && (menu.path === '/main'))) {

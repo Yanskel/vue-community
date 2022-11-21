@@ -75,6 +75,11 @@ const routes = [
         name: 'employeeManage',
         component: () => import('@/views/EmployeeManage'),
       },
+      {
+        path: '/personalApply',
+        name: 'personalApply',
+        component: () => import('@/views/PersonalApply'),
+      },
     ]
   }
 ]
