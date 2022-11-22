@@ -23,7 +23,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="状态">
+          <el-form-item label="账号状态">
             <el-switch v-model="dialogData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
               :inactive-value="0" @change="update(scope.row)">
             </el-switch>
@@ -36,11 +36,15 @@
       </el-dialog>
 
       <div>
+        <el-button type="success" icon="el-icon-document-add" @click="exportInfo">导出表格</el-button>
+      </div>
+      <div>
         <el-button class="clearButton" @click="clear">清除过滤</el-button>
         <el-input class="search" prefix-icon="el-icon-search" placeholder="请输入姓名" v-model="input" clearable
           @keyup.enter.native="handleQuery">
         </el-input>
       </div>
+      
     </div>
     <el-table :data="tableData" border style="width: 100%" v-loading="loading">
       <el-table-column fixed type="index" label="序号" width="60" align="center">
@@ -49,13 +53,13 @@
       </el-table-column>
       <el-table-column prop="name" label="真实姓名" width="120" align="center">
       </el-table-column>
-      <el-table-column prop="phone" label="电话号码" width="210" align="center">
+      <el-table-column prop="phone" label="电话号码" width="198" align="center">
       </el-table-column>
       <el-table-column prop="idNumber" label="身份证号码" width="300" align="center">
       </el-table-column>
       <el-table-column prop="acName" label="居住小区" width="120" align="center">
       </el-table-column>
-      <el-table-column label="状态" width="100" align="center">
+      <el-table-column label="账号状态" width="100" align="center">
         <template slot-scope="scope">
           <el-switch v-model="scope.row.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
             :inactive-value="0" @change="update(scope.row)">
@@ -197,6 +201,17 @@ export default {
         .catch(err => {
           this.$message.error(err)
         })
+    },
+    exportInfo(){
+      this.axios.post('/user/export')
+      .then(res => {
+        if(res.data.code ===1){
+          this.$message.success(res.data.data)
+        }
+      })
+      .catch(err => {
+        this.$message.error(err)
+      })
     }
   },
   watch: {
@@ -211,9 +226,9 @@ export default {
 
 <style lang="less" scoped>
 .headbar {
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 20px;
 }
 

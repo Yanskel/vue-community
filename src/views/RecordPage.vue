@@ -10,7 +10,7 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column label="序号" type="index">
+      <el-table-column label="序号" type="index" align="center">
       </el-table-column>
       <el-table-column label="申请人" align="center">
         <template slot-scope="scope">

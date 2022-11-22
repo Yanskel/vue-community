@@ -1,14 +1,18 @@
 <template>
   <div>
     <div class="headbar">
-      <el-button type="primary" @click="openAdd">+ 新增</el-button>
+      <div>
+        <el-button type="primary" @click="openAdd">+ 新增</el-button>
+        <!-- <el-button type="success" icon="el-icon-document-add">导出表格</el-button> -->
+      </div>
+
       <!-- 对话框 -->
       <el-dialog :title="title" :visible.sync="dialogVisible" width="30%" @close="closeEdit">
         <el-form label-position="right" label-width="80px" :model="dialogData" :rules="rules" ref="dialogData">
           <el-form-item label="用户名" prop="username" autocomplete="off">
             <el-input v-model="dialogData.username"></el-input>
           </el-form-item>
-          <el-form-item label="密码" v-if="!type" >
+          <el-form-item label="密码" v-if="!type">
             <el-input v-model="dialogData.password"></el-input>
           </el-form-item>
           <el-form-item label="真实姓名">
@@ -20,7 +24,7 @@
           <el-form-item label="身份证号">
             <el-input v-model="dialogData.idNumber"></el-input>
           </el-form-item>
-          <el-form-item label="状态">
+          <el-form-item label="账号状态">
             <el-switch v-model="dialogData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
               :inactive-value="0">
             </el-switch>
@@ -50,7 +54,7 @@
       </el-table-column>
       <el-table-column prop="idNumber" label="身份证号码" width="300" align="center">
       </el-table-column>
-      <el-table-column label="状态" width="100" align="center">
+      <el-table-column label="账号状态" width="100" align="center">
         <template slot-scope="scope">
           <el-switch v-model="scope.row.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
             :inactive-value="0" @change="update(scope.row)">

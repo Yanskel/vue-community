@@ -16,12 +16,13 @@
       </el-form>
     </div>
     <div class="div-inline" style="width:40%">
+      <h3>历史公告</h3>
       <div class="block">
         <el-timeline>
           <el-timeline-item v-for="a in announcement" :timestamp="a.announceTime" placement="top" :key="a.id">
             <el-card>
-              <h4>{{a.title}}</h4>
-              <p>{{a.notice}}</p>
+              <h4>{{ a.title }}</h4>
+              <p>{{ a.notice }}</p>
             </el-card>
           </el-timeline-item>
         </el-timeline>
@@ -63,7 +64,6 @@ export default {
         .then(res => {
           if (res.data.code === 1) {
             this.announcement = res.data.data.slice(0, 3)
-            console.log(this.announcement)
           }
         })
         .catch(err => {
@@ -76,9 +76,17 @@ export default {
 
 <style lang="less" scoped>
 .div-inline {
-  display: inline-block;
+  float: left;
 }
-.el-card__body{
+
+.el-card__body {
   padding: 10px;
+  .left{
+    margin-top: -50px;
+  }
+}
+
+h3 {
+  margin: 0 0 30px 70px;
 }
 </style>
