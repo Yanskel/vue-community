@@ -45,7 +45,6 @@ export default {
       rules: {
         name: [
           { required: true, message: '请输入真实姓名', trigger: 'blur' },
-          // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
         ],
         idNumber: [
           { required: true, message: '请输入身份证号码', trigger: 'blur' },

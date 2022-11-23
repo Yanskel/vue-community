@@ -60,8 +60,8 @@ export default {
       rightPwd: false, //判断密码
       correctPhone: false, //判断手机号
       form: {  // 登录与注册信息
-        username: '',
-        password: '',
+        username: 'lisi@cqust.com',
+        password: '11111111',
         phone: ''
       },
       loading: false, //登录转圈
@@ -103,7 +103,19 @@ export default {
               this.$router.replace('/complete')
             } else {
               this.$message.success('登录成功');
-              localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+              localStorage.setItem('userInfo', JSON.stringify(res.data.data.user))
+              //删除菜单里空的children元素
+              let menus = res.data.data.menu
+              for(let menu of menus){
+                if(menu.children.length === 0){
+                  delete menu.children
+                }
+                if(menu.url === null){
+                  delete menu.url
+                }
+              }
+              this.$store.commit('SET_MENU', menus)
+              // this.$store.commit('ADD_MENU',this.$router)
               this.$router.replace('/main')
             }
           } else {
@@ -175,7 +187,7 @@ export default {
       this.allowRegister()
     },
     //前往管理员登录页面
-    toAdmin(){
+    toAdmin() {
       this.$router.push('/adminLogin')
     }
   }

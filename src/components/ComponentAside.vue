@@ -21,110 +21,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import Cookies from 'js-cookie'
+import { mapState } from 'vuex'
 export default {
   name: 'ComponentAside',
-  data() {
-    return {
-      menuList: [
-        {
-          path: '/home',
-          name: 'home',
-          label: '首页',
-          icon: 'menu',
-        },
-        {
-          path: '/peopleManage',
-          name: 'peopleManage',
-          label: '人员管理',
-          icon: 'help',
-          children: [
-            {
-              path: '/residentManage',
-              name: 'residentManage',
-              label: '居民管理',
-              icon: 'user',
-            },
-            {
-              path: '/employeeManage',
-              name: 'employeeManage',
-              label: '员工管理',
-              icon: 's-custom',
-            }
-          ]
-        },
-        {
-          path: '/supplies',
-          name: 'supplies',
-          label: '物资申请',
-          icon: 'goods',
-          children: [
-            {
-              path: '/supApprove',
-              name: 'supApprove',
-              label: '物资审批',
-              icon: 'document-add',
-            },
-            {
-              path: '/record',
-              name: 'record',
-              label: '申请记录',
-              icon: 'postcard',
-            }
-          ]
-        },
-        {
-          path: '/health',
-          name: 'health',
-          label: '健康填报',
-          icon: 'document',
-        },
-        {
-          path: '/personalHealth',
-          name: 'personalHealth',
-          label: '个人健康填报记录',
-          icon: 'eleme',
-        },
-        {
-          path: '/healthRecord',
-          name: 'healthRecord',
-          label: '填报记录',
-          icon: 's-order',
-        },
-        {
-          path: '/supManage',
-          name: 'supManage',
-          label: '物资管理',
-          icon: 's-management',
-        },
-        {
-          path: '/announcement',
-          name: 'announcement',
-          label: '系统公告',
-          icon: 'chat-line-square',
-        },
-        {
-          path: '/personalApply',
-          name: 'personalApply',
-          label: '个人物资申请',
-          icon: 'folder-add',
-        },
-      ]
-    }
+  mounted() {
+    
   },
   methods: {
-    // handleOpen(key, keyPath) {
-    //   console.log(key, keyPath);
-    // },
-    // handleClose(key, keyPath) {
-    //   console.log(key, keyPath);
-    // },
     //菜单路由跳转
     clickMenu(menu) {
       if (this.$route.path !== menu.path && !(this.$route.path === '/home' && (menu.path === '/main'))) {
         this.$router.push(menu.path)
       }
-      
       this.$store.commit('SELECT_MENU', menu)
     }
   },
@@ -135,10 +44,10 @@ export default {
     hasChildren() {
       return this.menuList.filter(item => item.children)
     },
-    // isCollapse(){
-    //   return this.$store.state.isCollapse
-    // },
-    ...mapState(['isCollapse'])
+    menuList(){
+      return JSON.parse(Cookies.get('menu'))|| this.$store.state.menuList
+    },
+    ...mapState(['isCollapse']),
   }
 }
 </script>

@@ -80,6 +80,11 @@ const routes = [
         name: 'personalApply',
         component: () => import('@/views/PersonalApply'),
       },
+      {
+        path: '/personalCenter',
+        name: 'personalCenter',
+        component: () => import('@/views/PersonalCenter'),
+      }
     ]
   }
 ]

@@ -21,9 +21,6 @@
           <el-form-item label="电话号码">
             <el-input v-model="dialogData.phone"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号">
-            <el-input v-model="dialogData.idNumber"></el-input>
-          </el-form-item>
           <el-form-item label="账号状态">
             <el-switch v-model="dialogData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
               :inactive-value="0">
@@ -46,15 +43,13 @@
     <el-table :data="tableData" border style="width: 100%" v-loading="loading">
       <el-table-column fixed type="index" label="序号" width="60" align="center">
       </el-table-column>
-      <el-table-column prop="username" label="用户名" width="200" align="center">
+      <el-table-column prop="username" label="用户名" align="center">
       </el-table-column>
-      <el-table-column prop="name" label="真实姓名" width="120" align="center">
+      <el-table-column prop="name" label="真实姓名" align="center">
       </el-table-column>
-      <el-table-column prop="phone" label="电话号码" width="210" align="center">
+      <el-table-column prop="phone" label="电话号码" align="center">
       </el-table-column>
-      <el-table-column prop="idNumber" label="身份证号码" width="300" align="center">
-      </el-table-column>
-      <el-table-column label="账号状态" width="100" align="center">
+      <el-table-column label="账号状态" align="center">
         <template slot-scope="scope">
           <el-switch v-model="scope.row.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
             :inactive-value="0" @change="update(scope.row)">

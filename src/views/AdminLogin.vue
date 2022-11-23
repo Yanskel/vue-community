@@ -6,10 +6,14 @@
         <el-input type="text" v-model="form.username" placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
+        <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password @keyup.enter.native="login">
+        </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">登录</el-button>
+        <el-button :loading="loading" type="primary" @click="login">
+          <span v-if="!loading">登录</span>
+          <span v-else>登录中...</span>
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -23,6 +27,34 @@ export default {
         username: '',
         password: ''
       },
+      loading: false
+    }
+  },
+  methods: {
+    login() {
+      this.loading = true
+      this.axios.post('/admin/login', this.form)
+        .then(res => {
+          if (res.data.code === 1) {
+            this.$message.success('管理员登录成功')
+            localStorage.setItem('userInfo', JSON.stringify(res.data.data.admin))
+            //删除菜单里空的children元素
+            let menus = res.data.data.menu
+            for (let menu of menus) {
+              if (menu.children.length === 0) {
+                delete menu.children
+              }
+            }
+            this.$store.commit('SET_MENU', menus)
+            this.$router.replace('/main')
+          } else {
+            this.$message.error(res.data.msg);
+            this.loading = false
+          }
+        })
+        .catch(err => {
+          this.$message.error(err);
+        })
     }
   },
 }

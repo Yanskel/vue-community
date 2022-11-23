@@ -13,11 +13,11 @@
       <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link text">
           <i class="el-icon-user"></i>
-          {{ userInfo.name }}<i class="el-icon-arrow-down el-icon--right"></i>
+          {{ userInfo.name || '管理员'}}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item divided command="logout">退出</el-dropdown-item>
+          <el-dropdown-item v-if="userInfo.role === 0" command="personalCenter">个人中心</el-dropdown-item>
+          <el-dropdown-item command="logout">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -44,15 +44,17 @@ export default {
           .then(res => {
             if (res.data.code === 1) {
               localStorage.removeItem('userInfo')
+              this.$store.commit('DEL_MENU')
               this.$message.info(res.data.data)
               this.$router.push('/')
             }
           })
           .catch(err => {
-            console.error(err);
+            this.$message.error(err)
           })
+      }else if(command === 'personalCenter'){
+        this.$router.push('/personalCenter')
       }
-
     }
   },
   created() {
