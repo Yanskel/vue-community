@@ -4,7 +4,7 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="驳回原因">
+            <el-form-item label="驳回原因：">
               <span>{{ props.row.reply }}</span>
             </el-form-item>
           </el-form>

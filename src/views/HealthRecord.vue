@@ -7,11 +7,11 @@
           @keyup.enter.native="handleQuery">
         </el-input>
       </div>
-      <div class="date-filter">
+      <!-- <div class="date-filter">
         <el-date-picker v-model="time" type="daterange" unlink-panels range-separator="至" start-placeholder="开始日期"
           end-placeholder="结束日期" :picker-options="pickerOptions">
         </el-date-picker>
-      </div>
+      </div> -->
     </div>
     <div class="form">
       <el-table :data="tableData" style="width: 100%" v-loading="loading">
@@ -65,8 +65,21 @@
         </el-table-column>
         <el-table-column label="数据状态" align="center" width="200px">
           <template slot-scope="scope">
-            <el-tag type="success" v-if="scope.row.temperature === 0">正常</el-tag>
-            <el-tag type="danger" v-if="scope.row.temperature === 1">异常</el-tag>
+            <!-- 体温 -->
+            <i class="el-icon-success" v-if="scope.row.temperature === 0"></i>
+            <i class="el-icon-error" v-else-if="scope.row.temperature === 1"></i>
+            <!-- 新冠症状 -->
+            <i class="el-icon-success" v-if="scope.row.symptom === 0"></i>
+            <i class="el-icon-error" v-else-if="scope.row.symptom === 1"></i>
+            <!-- 健康码 -->
+            <i class="el-icon-success" v-if="scope.row.healthColor === 0"></i>
+            <i class="el-icon-warning" v-else-if="scope.row.healthColor === 1"></i>
+            <i class="el-icon-error" v-else-if="scope.row.healthColor === 2"></i>
+            <i class="el-icon-remove" v-else-if="scope.row.healthColor === 3"></i>
+            <i class="el-icon-question" v-else-if="scope.row.healthColor === 4"></i>
+            <!-- 行程卡 -->
+            <i class="el-icon-success" v-if="scope.row.route === 0"></i>
+            <i class="el-icon-error" v-else-if="scope.row.route === 1"></i>
           </template>
         </el-table-column>
         <el-table-column label="居住小区" prop="acName" align="center">
@@ -218,4 +231,23 @@ export default {
   margin-top: 10px;
 }
 
+.el-icon-warning {
+  color: #E6A23C;
+}
+
+.el-icon-success {
+  color: #67C23A;
+}
+
+.el-icon-error {
+  color: #F56C6C;
+}
+
+.el-icon-remove {
+  color: #909399;
+}
+
+i {
+  margin-left: 5px;
+}
 </style>

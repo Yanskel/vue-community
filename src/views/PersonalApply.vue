@@ -51,7 +51,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="物资数量">
-          <el-input-number v-model="form.number" :min="1" label="描述文字"></el-input-number>
+          <el-input-number v-model="form.number" :min="1" :max="10" label="描述文字"></el-input-number>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
