@@ -18,31 +18,33 @@
         <el-table-column type="expand">
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="真实姓名">
+              <el-form-item label="真实姓名" label-width="90px" class="label">
                 <span>{{ props.row.residentName }}</span>
               </el-form-item>
-              <el-form-item label="电话号码">
+              <el-form-item label="电话号码" label-width="90px" class="label">
                 <span>{{ props.row.residentPhone }}</span>
               </el-form-item>
-              <el-form-item label="居住小区">
+              <el-form-item label="居住小区" label-width="90px" class="label">
                 <span>{{ props.row.acName }}</span>
               </el-form-item>
-              <el-form-item label="体温状态">
+              <el-form-item>
+              </el-form-item>
+              <el-form-item label="体温情况" label-width="90px" class="label">
                 <el-tag type="success" v-if="props.row.temperature === 0">正常</el-tag>
                 <el-tag type="danger" v-if="props.row.temperature === 1">异常</el-tag>
               </el-form-item>
-              <el-form-item label="新冠症状">
+              <el-form-item label="新冠病症" label-width="90px" class="label">
                 <el-tag type="success" v-if="props.row.symptom === 0">无</el-tag>
                 <el-tag type="danger" v-if="props.row.symptom === 1">有</el-tag>
               </el-form-item>
-              <el-form-item label="健康码颜色">
+              <el-form-item label="健康码颜色" label-width="90px" class="label">
                 <el-tag type="success" v-if="props.row.healthColor === 0">绿码</el-tag>
                 <el-tag type="warning" v-if="props.row.healthColor === 1">黄码</el-tag>
                 <el-tag type="danger" v-if="props.row.healthColor === 2">红码</el-tag>
                 <el-tag type="info" v-if="props.row.healthColor === 3">弹框</el-tag>
                 <el-tag v-if="props.row.healthColor === 4">其他</el-tag>
               </el-form-item>
-              <el-form-item label="行程卡状态">
+              <el-form-item label="行程卡状态" label-width="90px" class="label">
                 <el-tag type="success" v-if="props.row.route === 0">正常</el-tag>
                 <el-tag type="danger" v-if="props.row.route === 1">异常</el-tag>
               </el-form-item>
@@ -55,8 +57,8 @@
           <template slot-scope="scope">
             <el-popover trigger="hover" placement="top">
               <p>姓名: {{ scope.row.residentName }}</p>
-              <p>电话号码: {{ scope.row.residentPhone }}</p>
-              <p>居住小区: {{ scope.row.acName }}</p>
+              <p>手机: {{ scope.row.residentPhone }}</p>
+              <p>小区: {{ scope.row.acName }}</p>
               <div slot="reference" class="name-wrapper">
                 <el-tag size="medium">{{ scope.row.residentName }}</el-tag>
               </div>
@@ -196,23 +198,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.demo-table-expand {
-  font-size: 0;
-}
-
-.demo-table-expand label {
-  width: 90px;
-  color: #99a9bf;
-}
-
-.el-form-item__label {
-  color: #99a9bf;
-}
-
 .demo-table-expand .el-form-item {
-  margin-right: 0;
+  margin-right: 60px;
   margin-bottom: 0;
-  width: 50%;
+  width: 30%;
+}
+
+.label {
+  color: #99a9bf;
 }
 
 .el-form-item {

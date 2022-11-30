@@ -1,18 +1,18 @@
 <template>
-  <el-menu default-active="1" class="el-menu-vertical-demo"
+  <el-menu :default-active="$route.path" class="el-menu-vertical-demo"
     :collapse="isCollapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
     <h3>{{ isCollapse ? '社区' : '社区疫情防控系统' }}</h3>
-    <el-menu-item v-for="n in noChildren" :key="n.name" :index="n.name" @click="clickMenu(n)">
+    <el-menu-item v-for="n in noChildren" :key="n.name" :index="n.path" @click="clickMenu(n)">
       <i :class="`el-icon-${n.icon}`"></i>
       <span slot="title">{{ n.label }}</span>
     </el-menu-item>
 
-    <el-submenu v-for="h in hasChildren" :key="h.name" :index="h.name">
+    <el-submenu v-for="h in hasChildren" :key="h.name" :index="h.path">
       <template slot="title">
         <i :class="`el-icon-${h.icon}`"></i>
         <span slot="title">{{ h.label }}</span>
       </template>
-        <el-menu-item @click="clickMenu(c)" v-for="c in h.children" :key="c.name" :index="c.name">
+        <el-menu-item @click="clickMenu(c)" v-for="c in h.children" :key="c.name" :index="c.path">
           <i :class="`el-icon-${c.icon}`"></i>
           {{ c.label }}
         </el-menu-item>
