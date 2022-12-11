@@ -81,6 +81,7 @@ export default {
                   .then(res => {
                     if (res.data.code === 1) {
                       localStorage.removeItem('userInfo')
+                      this.$store.commit('DEL_MENU')
                       this.$message.info('个人信息修改，请重新登录')
                       this.$router.push('/')
                     }

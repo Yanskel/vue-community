@@ -94,6 +94,12 @@ export default {
     //登录
     login() {
       this.loading = true
+      if (this.form.username == null || this.form.username == '') {
+        return this.$message.error('请输入用户名');
+      }
+      if (this.form.password == null || this.form.password == '') {
+        return this.$message.error('请输入密码');
+      }
       this.axios.post('/user/login', this.form)
         .then(res => {
           if (res.data.code === 1) {
@@ -106,11 +112,11 @@ export default {
               localStorage.setItem('userInfo', JSON.stringify(res.data.data.user))
               //删除菜单里空的children元素
               let menus = res.data.data.menu
-              for(let menu of menus){
-                if(menu.children.length === 0){
+              for (let menu of menus) {
+                if (menu.children.length === 0) {
                   delete menu.children
                 }
-                if(menu.url === null){
+                if (menu.url === null) {
                   delete menu.url
                 }
               }
