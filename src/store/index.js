@@ -52,7 +52,7 @@ export default new Vuex.Store({
       })
       Cookies.set('menu', JSON.stringify(state.menuList))
     },
-    DEL_MENU(state) {   //删除菜单
+    DEL_MENU(state) {   //重置菜单
       state.menuList = [
         {
           path: '/home',

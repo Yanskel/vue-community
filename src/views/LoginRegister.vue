@@ -9,7 +9,8 @@
           <div class="btitle">账户登录</div>
           <div class="bform">
             <el-input placeholder="请输入用户名" v-model="form.username"></el-input>
-            <el-input placeholder="请输入密码" v-model="form.password" show-password @keyup.enter.native="login"></el-input>
+            <el-input placeholder="请输入密码" v-model="form.password" show-password @keyup.enter.native="login">
+            </el-input>
           </div>
           <el-button :loading="loading" class="bbutton" @click="login">
             <span v-if="!loading">登录</span>
@@ -104,7 +105,7 @@ export default {
         .then(res => {
           if (res.data.code === 1) {
             this.$store.commit('ADD_LOGIN', res.data.data)
-            if (res.data.data.role === 0 && res.data.data.idNumber == null) {
+            if (res.data.data.user.role === 0 && (res.data.data.user.idNumber == null || res.data.data.user.idNumber == '')) {
               this.$message.info('请先完善个人信息');
               this.$router.replace('/complete')
             } else {

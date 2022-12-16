@@ -9,11 +9,11 @@
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="身份证号" prop="idNuimber">
+        <el-form-item label="身份证号" prop="idNumber">
           <el-input v-model="ruleForm.idNumber"></el-input>
         </el-form-item>
 
-        <el-form-item label="居住小区" prop="region">
+        <el-form-item label="居住小区" prop="acId">
           <el-select v-model="ruleForm.acId" placeholder="请选择现居住小区" filterable>
             <el-option v-for="r in region" :key="r.id" :label="r.acName" :value="r.id">
             </el-option>
@@ -73,14 +73,29 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.ruleForm.id = this.userForm.id
-          this.ruleForm.username = this.userForm.username
-          this.ruleForm.password = this.userForm.password
-          this.ruleForm.phone = this.userForm.phone
-          this.axios.put('/user', this.ruleForm)
+          this.ruleForm.id = this.userForm.user.id
+          this.ruleForm.username = this.userForm.user.username
+          this.ruleForm.password = this.userForm.user.password
+          this.ruleForm.phone = this.userForm.user.phone
+          this.ruleForm.role = this.userForm.user.role
+          this.ruleForm.status = this.userForm.user.status
+          this.axios.put('/user/firstUpdate', this.ruleForm)
             .then(res => {
               if (res.data.code === 1) {
                 this.$message.success('提交成功');
+                localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+                //删除菜单里空的children元素
+                let menus = this.userForm.menu
+                for (let menu of menus) {
+                  if (menu.children.length === 0) {
+                    delete menu.children
+                  }
+                  if (menu.url === null) {
+                    delete menu.url
+                  }
+                }
+                this.$store.commit('SET_MENU', menus)
+                this.$router.replace('/main')
               } else {
                 this.$message.success('提交失败');
               }
@@ -99,6 +114,18 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
+    getUser() {
+      this.axios.get('/user/' + this.userForm.id)
+        .then(res => {
+          if (res.data.data === 1) {
+            console.log(res.data.data)
+            // localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+          }
+        })
+        .catch(err => {
+          console.error(err);
+        })
+    }
   },
 }
 </script>

@@ -17,9 +17,9 @@ axios.defaults.baseURL = '/api'
 router.beforeEach((to, from, next) => {
   //用户登录信息
   const userInfo = localStorage.getItem('userInfo')
-  if (!userInfo && to.name !== 'userLogin' && to.name !== 'adminLogin') {
+  if (!userInfo && to.name !== 'userLogin' && to.name !== 'adminLogin' && to.name !== 'complete') {
     next({ name: 'userLogin' })
-  } else if (userInfo && to.name === 'userLogin' || userInfo && to.name === 'adminLogin') {
+  } else if (userInfo && to.name === 'userLogin' || userInfo && to.name === 'adminLogin'|| userInfo && to.name === 'complete') {
     next({ name: 'main' })
   } else {
     next()
