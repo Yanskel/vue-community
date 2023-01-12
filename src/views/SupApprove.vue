@@ -23,6 +23,8 @@
       </el-table-column>
       <el-table-column label="居住小区" prop="acName" align="center">
       </el-table-column>
+      <el-table-column label="家庭住址" prop="address" align="center">
+      </el-table-column>
       <el-table-column label="审批状态" align="center">
         <i class="el-icon-warning"> 未审批</i>
       </el-table-column>
@@ -134,6 +136,8 @@ export default {
           if (res.data.code === 1) {
             this.$message.success(res.data.data)
             this.getAll()
+          } else {
+            this.$message.error(res.data.msg)
           }
         })
         .catch(err => {

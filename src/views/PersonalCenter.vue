@@ -22,6 +22,9 @@
             <el-option v-for="a in apartmentComplex" :label="a.acName" :value="a.id" :key="a.id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="家庭住址" prop="address">
+          <el-input v-model="userInfo.address"></el-input>
+        </el-form-item>
         <el-form-item v-if="!changePass">
           <el-link type="primary" @click="openChange">修改密码</el-link>
         </el-form-item>
@@ -57,6 +60,9 @@ export default {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 8, max: 16, message: '密码长度应为8~16位', trigger: 'blur' }
+        ],
+        address: [
+          { required: true, message: '请输入家庭住址', trigger: 'blur' },
         ],
       },
       apartmentComplex: [],

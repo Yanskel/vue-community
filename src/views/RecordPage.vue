@@ -32,6 +32,8 @@
       </el-table-column>
       <el-table-column label="居住小区" prop="acName" align="center">
       </el-table-column>
+      <el-table-column label="家庭住址" prop="address" align="center">
+      </el-table-column>
       <el-table-column label="审批状态" align="center">
         <template slot-scope="scope">
           <i v-if="scope.row.status === 0" class="el-icon-warning"> 未审批</i>

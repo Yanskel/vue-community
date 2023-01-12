@@ -62,25 +62,6 @@ export default new Vuex.Store({
         }
       ]
     },
-    // ADD_MENU(state) {
-    //   if (!Cookies.get('menu')) return
-    //   const menu = JSON.parse(Cookies.get('menu')) 
-    //   state.menuList = menu
-    //   const menuArray = []
-    //   menu.forEach(item => {
-    //     if (item.children) {
-    //       item.children = item.children.map(item => {
-    //         item.component = () => import(`../views/${item.url}`)
-    //         return item
-    //       })
-    //       menuArray.push(...item.children)
-    //     } else {
-    //       item.component = () => import(`../views/${item.url}`)
-    //       menuArray.push(item)
-    //     }
-    //   });
-    //   console.log(menuArray)
-    // }
   },
   actions: {
   },

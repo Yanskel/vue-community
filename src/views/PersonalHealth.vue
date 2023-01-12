@@ -27,7 +27,8 @@
               <el-form-item label="居住小区" label-width="90px" class="label">
                 <span>{{ props.row.acName }}</span>
               </el-form-item>
-              <el-form-item>
+              <el-form-item label="家庭住址" label-width="90px" class="label">
+                <span>{{ props.row.address }}</span>
               </el-form-item>
               <el-form-item label="体温情况" label-width="90px" class="label">
                 <el-tag type="success" v-if="props.row.temperature === 0">正常</el-tag>

@@ -26,18 +26,18 @@
     <el-table ref="filterTable" :data="supplies" style="width: 100%" v-loading="loading">
       <el-table-column type="index" label="序号" align="center" width="100px">
       </el-table-column>
-      <el-table-column prop="name" label="物资名称" align="center" width="300px">
+      <el-table-column prop="name" label="物资名称" align="center">
       </el-table-column>
-      <el-table-column prop="total" label="总数" align="center" width="300px">
+      <el-table-column prop="total" label="总数" align="center">
       </el-table-column>
       <el-table-column prop="categoryName" label="种类" :filters="type" :filter-method="filterTag"
-        filter-placement="bottom-end" align="center" width="300px">
+        filter-placement="bottom-end" align="center">
         <template slot-scope="scope">
           <el-tag :type="colorType(scope.row)" disable-transitions>{{ scope.row.categoryName }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center">
+      <el-table-column label="操作" align="center" width="300px">
         <template slot-scope="scope">
           <el-button @click="openEdit(scope.row)" type="text" size="small">编辑</el-button>
           <el-button @click="handelDelte(scope.row)" type="danger" size="small">删除</el-button>

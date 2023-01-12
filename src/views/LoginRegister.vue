@@ -62,7 +62,7 @@ export default {
       correctPhone: false, //判断手机号
       form: {  // 登录与注册信息
         username: 'lisi@cqust.com',
-        password: '11111111',
+        password: '12345678',
         phone: ''
       },
       loading: false, //登录转圈

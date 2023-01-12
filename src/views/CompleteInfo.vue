@@ -20,6 +20,10 @@
           </el-select>
         </el-form-item>
 
+        <el-form-item label="家庭住址" prop="address">
+          <el-input v-model="ruleForm.address"></el-input>
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">立即提交</el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -52,7 +56,10 @@ export default {
         ],
         acId: [
           { required: true, message: '请选择居住的小区', trigger: 'change' }
-        ]
+        ],
+        address: [
+          { required: true, message: '请输入家庭住址', trigger: 'blur' },
+        ],
       }
     }
   },

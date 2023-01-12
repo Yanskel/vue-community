@@ -23,6 +23,9 @@
               </el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="家庭住址">
+            <el-input v-model="dialogData.address"></el-input>
+          </el-form-item>
           <el-form-item label="账号状态">
             <el-switch v-model="dialogData.status" active-color="#13ce66" inactive-color="#ff4949" :active-value="1"
               :inactive-value="0" @change="update(scope.row)">
@@ -51,13 +54,15 @@
       </el-table-column>
       <el-table-column prop="username" label="用户名" width="200" align="center">
       </el-table-column>
-      <el-table-column prop="name" label="真实姓名" width="120" align="center">
+      <el-table-column prop="name" label="真实姓名" width="200" align="center">
       </el-table-column>
-      <el-table-column prop="phone" label="电话号码" width="198" align="center">
+      <el-table-column prop="phone" label="电话号码" align="center">
       </el-table-column>
-      <el-table-column prop="idNumber" label="身份证号码" width="300" align="center">
+      <el-table-column prop="idNumber" label="身份证号码" align="center">
       </el-table-column>
-      <el-table-column prop="acName" label="居住小区" width="120" align="center">
+      <el-table-column prop="acName" label="居住小区" align="center">
+      </el-table-column>
+      <el-table-column prop="address" label="家庭住址" width="120" align="center">
       </el-table-column>
       <el-table-column label="账号状态" width="100" align="center">
         <template slot-scope="scope">
