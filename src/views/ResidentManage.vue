@@ -54,11 +54,11 @@
       </el-table-column>
       <el-table-column prop="username" label="用户名" width="200" align="center">
       </el-table-column>
-      <el-table-column prop="name" label="真实姓名" width="200" align="center">
+      <el-table-column prop="name" label="真实姓名" width="100" align="center">
       </el-table-column>
-      <el-table-column prop="phone" label="电话号码" align="center">
+      <el-table-column prop="phone" label="电话号码" width="200" align="center">
       </el-table-column>
-      <el-table-column prop="idNumber" label="身份证号码" align="center">
+      <el-table-column prop="idNumber" label="身份证号码" width="200" align="center">
       </el-table-column>
       <el-table-column prop="acName" label="居住小区" align="center">
       </el-table-column>

@@ -140,7 +140,7 @@ export default {
 <style scoped>
 #infoForm {
   width: 30%;
-  height: 50%;
+  height: 58%;
   background-color: white;
   position: absolute;
   left: 35%;
